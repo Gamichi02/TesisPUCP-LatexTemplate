@@ -1,0 +1,174 @@
+\documentclass[12pt]{report}
+
+% =====================
+% PAQUETES BÁSICOS
+% =====================
+\usepackage{blindtext}                           % Para generar texto de ejemplo
+\usepackage[T1]{fontenc}                         % Codificación de fuente
+\usepackage{fontspec}                            % Cambiar el tipo de letra
+\usepackage[a4paper, margin=25.4mm]{geometry}    % Configuración de la hoja
+\usepackage{graphicx}                            % Insertar gráficos e imágenes
+\usepackage[font=small,labelfont=bf]{caption}    % Configuración de captions para tablas e imágenes
+\usepackage{subcaption}                          % Subcaptions para imágenes
+\usepackage{hyperref}                            % Hacer links clicables
+\usepackage{listings}                            % Mostrar código de programación
+\usepackage{amsmath}                             % Para símbolos y ecuaciones matemáticas
+\usepackage{xcolor}                              % Para manejar colores
+\usepackage{indentfirst}                         % Identación en el primer párrafo de cada sección
+\usepackage{multirow}                            % Tablas con celdas de múltiples filas
+\usepackage{titlesec}                            % Control sobre títulos de sección y capítulo
+\usepackage{array}                               % Mejorar tablas
+\usepackage{enumitem}                            % Mejorar listas
+\usepackage{polyglossia}                         % Para manejar idiomas (como español)
+\usepackage[titles]{tocloft}                     % Personalizar tabla de contenidos
+
+% =====================
+% CONFIGURACIÓN DE IDIOMA Y FUENTE
+% =====================
+\setdefaultlanguage{spanish}                     % Configura el idioma a español
+\setmainfont{Times New Roman}                    % Cambia la fuente principal
+
+% =====================
+% CONFIGURACIÓN DE TABLAS Y FIGURAS
+% =====================
+\usepackage{chngcntr}
+\counterwithout{figure}{chapter}                % Evita que las figuras estén numeradas por capítulo
+\counterwithout{table}{chapter}                 % Evita que las tablas estén numeradas por capítulo
+
+% Para cambiar "Cuadro" por "Tabla"
+\gappto\captionsspanish{\renewcommand{\tablename}{Tabla}} 
+
+% =====================
+% CONFIGURACIÓN DE LISTINGS (Código de Programación)
+% =====================
+\lstset{
+  language=Python,                              % Cambia esto al lenguaje de tu preferencia
+  basicstyle=\ttfamily\footnotesize,
+  keywordstyle=\color{blue},
+  commentstyle=\color{green},
+  stringstyle=\color{red},
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  stepnumber=1,
+  numbersep=5pt,
+  backgroundcolor=\color{white},
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  frame=single,
+  tabsize=2
+}
+
+% =====================
+% CONFIGURACIÓN DE TABLE OF CONTENTS (TOC)
+% =====================
+\renewcommand{\contentsname}{\centerline{\Large\bfseries Tabla de Contenido}}
+\renewcommand{\cftchapfont}{\normalfont}
+\renewcommand{\cftchappagefont}{\normalfont}
+\renewcommand{\cftsecfont}{\normalfont}
+\renewcommand{\cftsecpagefont}{\normalfont}
+\renewcommand{\cftsubsecfont}{\normalfont}
+\renewcommand{\cftsubsecpagefont}{\normalfont}
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftchappresnum}{Capítulo }
+\renewcommand{\cftchapaftersnum}{.}
+\setlength{\cftchapnumwidth}{5em}
+\renewcommand{\cftfigpresnum}{Figura }
+\renewcommand{\cftfigaftersnum}{.}
+\setlength{\cftfignumwidth}{4.5em}
+\renewcommand{\cfttabpresnum}{Tabla }  
+\renewcommand{\cfttabaftersnum}{.}
+\setlength{\cfttabnumwidth}{4em}              
+
+% =====================
+% CONFIGURACIÓN DE TITLESEC (Títulos)
+% =====================
+\titleformat{\chapter}
+  {\normalfont\Large\bfseries}
+  {Capítulo \thechapter.}{1em}{}
+\titlespacing*{\chapter}{0pt}{-20pt}{20pt}
+
+% =====================
+% CONFIGURACIÓN DE BIBLIOGRAFÍA
+% =====================
+\usepackage[backend=biber, style=apa, sorting=nyt]{biblatex}
+\addbibresource{references.bib}                 % Añade el archivo de referencias
+
+% =====================
+% CONFIGURACIÓN DE FANCYHDR (Encabezado y pie de página)
+% =====================
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead{}                                    
+\setlength{\headheight}{5.1pt}                  
+\renewcommand{\headrulewidth}{0pt}              
+
+% =====================
+% DOCUMENTO
+% =====================
+\begin{document}
+
+% =====================
+% PORTADA
+% =====================
+\begin{titlepage}
+  \centering
+  {\bfseries\fontsize{14pt}{28pt}\selectfont PONTIFICIA UNIVERSIDAD CATÓLICA DEL PERÚ \par}
+  {\bfseries\fontsize{14pt}{28pt}\selectfont FACULTAD DE CIENCIAS E INGENIERÍA \par}
+  \vfill
+  {\includegraphics[width=1\textwidth]{Images/logo_pucp.png}\par} % Cambia la ruta al logo si es necesario
+  {\bfseries\fontsize{16pt}{28pt}\selectfont Nombre del proyecto de fin de carrera \par}
+  {\bfseries\fontsize{14pt}{28pt}\selectfont Tesis para obtener el título de Ingeniero Informático \par}
+  \vfill
+  {\bfseries\fontsize{14pt}{28pt}\selectfont AUTORA: \par}
+  {\fontsize{14pt}{28pt}\selectfont Nombre del Autor \par}
+  \vfill
+  {\bfseries\fontsize{14pt}{28pt}\selectfont ASESORES: \par}
+  {\fontsize{14pt}{28pt}\selectfont Asesor 1 \\ Asesor 2 \par}
+  \vfill
+  {\fontsize{14pt}{28pt}\selectfont Lima, Septiembre, 2024 \par}
+\end{titlepage}
+
+% =====================
+% CONFIGURACIÓN GENERAL DEL DOCUMENTO
+% =====================
+\pagenumbering{roman}                           % Números romanos para prefacios
+\setlength{\parindent}{1cm}                     % Sangría de 1 cm
+\fontsize{12}{24}\selectfont                    % Tamaño de letra 12 con interlineado 24
+
+% =====================
+% ÍNDICES
+% =====================
+\renewcommand{\contentsname}{\centerline{\Large\bfseries Tabla de Contenido}}
+\tableofcontents
+\clearpage
+
+\renewcommand{\listfigurename}{\centerline{\Large\bfseries Índice de Figuras}}
+\listoffigures
+\clearpage
+
+\renewcommand{\listtablename}{\centerline{\Large\bfseries Índice de Tablas}}
+\listoftables
+\clearpage
+
+% =====================
+% CAPÍTULOS PRINCIPALES (Aquí incluirás los capítulos de tu documento)
+% =====================
+\pagenumbering{arabic}                          % Números arábigos para los capítulos
+\include{Chapters/1Generalidades}                % Problemática y objetivos
+\include{Chapters/2Marcos}                   % Marcos
+\include{Chapters/3EstadoDelArte}               % Estado del Arte
+
+% =====================
+% BIBLIOGRAFÍA
+% =====================
+\addcontentsline{toc}{chapter}{Referencias}
+\renewcommand*{\bibfont}{\fontsize{10}{10}\selectfont} 
+\printbibliography
+
+% =====================
+% APÉNDICES (Descomentar si se incluyen apéndices)
+% \appendix
+% \include{Chapters/4Appendix}
+
+\end{document}
