@@ -2,6 +2,7 @@
 # Plantilla de Tesis PUCP en LaTeX
 
 **Author:** María Rojas
+
 Esta es una plantilla para trabajos de tesis de la PUCP, Ingeniería Informática, hecha en LaTeX.
 ![Vista PDF](Images/pdf.png)
 
